@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TESTS>
+
+    <THEMA text="Что такое механическая клавиатура?">
+        <QUESTION text="Выберите недостатки мембранной клавиатуры:">
+            <VARIANT isTrue="0">клавишу необязательно нажимать до упора</VARIANT>
+            <VARIANT isTrue="1">резиновые купола со временем изнашиваются, теряя эластичность</VARIANT>
+            <VARIANT isTrue="1">мембрана изнашивается со временем</VARIANT>
+        </QUESTION>
+        <QUESTION text="К какой категории относятся переключатели Topre?">
+            <VARIANT isTrue="1">Ёмкостные</VARIANT>
+            <VARIANT isTrue="0">Оптические</VARIANT>
+			<VARIANT isTrue="0">Магнитные</VARIANT>
+        </QUESTION>
+        <QUESTION text="Выберите преимущества механических клавиатур:">
+            <VARIANT isTrue="1">эргономика</VARIANT>
+            <VARIANT isTrue="0">дешевизна</VARIANT>
+            <VARIANT isTrue="1">высокая надёжность</VARIANT>
+        </QUESTION>
+        <QUESTION text="Выберите существующую раскладки:">
+            <VARIANT isTrue="0">Cherry</VARIANT>
+            <VARIANT isTrue="0">ALPS</VARIANT>
+            <VARIANT isTrue="1">TKL</VARIANT>
+        </QUESTION>
+        <QUESTION text="Раскладка ANSI появилась в США">
+            <VARIANT isTrue="1">Да</VARIANT>
+            <VARIANT isTrue="0">Нет</VARIANT>
+        </QUESTION>
+        <QUESTION text="Раскладка ISO имеет горизонтальный Enter">
+            <VARIANT isTrue="0">Да</VARIANT>
+            <VARIANT isTrue="1">Нет</VARIANT>
+        </QUESTION>
+        <QUESTION text="TKL представляет собой раскладку, где нет:">
+            <VARIANT isTrue="1">F-ряда</VARIANT>
+            <VARIANT isTrue="0">цифрового блока</VARIANT>
+            <VARIANT isTrue="0">стрелок</VARIANT>
+        </QUESTION>
+        <QUESTION text="В 65% раскладке нет:">
+            <VARIANT isTrue="1">F-ряда</VARIANT>
+            <VARIANT isTrue="0">стрелок</VARIANT>
+            <VARIANT isTrue="1">цифрового блока</VARIANT>
+        </QUESTION>
+        <QUESTION text="В какой раскладке используется big ass Enter?">
+            <VARIANT isTrue="1">asian</VARIANT>
+        </QUESTION>
+        <QUESTION text="Что такое стаггер?">
+            <VARIANT isTrue="1">сдвиг рядов</VARIANT>
+        </QUESTION>
+		<QUESTION text="Бывают ли разделенные на две части эргоклавиатуры?">
+            <VARIANT isTrue="1">Да</VARIANT>
+            <VARIANT isTrue="0">Нет</VARIANT>
+        </QUESTION>
+		<QUESTION text="Выберите open source клавиатуры:">
+            <VARIANT isTrue="0">TGR Alice</VARIANT>
+            <VARIANT isTrue="1">Jiran</VARIANT>
+			<VARIANT isTrue="0">Ikki68</VARIANT>
+			<VARIANT isTrue="1">Lily58</VARIANT>
+			<VARIANT isTrue="0">Vortex Core</VARIANT>
+        </QUESTION>
+		<QUESTION text="Какой стаггер имеет клавиатура Atlas?">
+            <VARIANT isTrue="1">матричный</VARIANT>
+        </QUESTION>
+		<QUESTION text="Какой стаггер имеет клавиатура Cornelius?">
+            <VARIANT isTrue="1">вертикальный</VARIANT>
+        </QUESTION>
+		<QUESTION text="Выберите клавиатуру на базе Topre переключателей:">
+            <VARIANT isTrue="0">Vortex Core</VARIANT>
+			<VARIANT isTrue="0">Niz Plum 108</VARIANT>
+			<VARIANT isTrue="1">HHKB Professional 2</VARIANT>
+        </QUESTION>
+    </THEMA>
+
+
+    <THEMA text="Переключатели">
+        <QUESTION text="Какие защелки использует Cherry в своих переключателях?">
+            <VARIANT isTrue="1">четыре защелки по бокам переключателя</VARIANT>
+            <VARIANT isTrue="0">две большие защелки по бокам переключателя</VARIANT>
+        </QUESTION>
+        <QUESTION text="Какие защелки использует Kailh в своих переключателях?">
+            <VARIANT isTrue="1">четыре защелки по бокам переключателя</VARIANT>
+            <VARIANT isTrue="0">две большие защелки по бокам переключателя</VARIANT>
+        </QUESTION>
+        <QUESTION text="Сколько pin'ов может иметь переключатель?">
+            <VARIANT isTrue="1">один</VARIANT>
+            <VARIANT isTrue="0">два</VARIANT>
+            <VARIANT isTrue="1">три</VARIANT>
+			<VARIANT isTrue="0">четыре</VARIANT>
+			<VARIANT isTrue="1">пять</VARIANT>
+        </QUESTION>
+        <QUESTION text="Сколько pin'ов имеет оптический переключатель?">
+            <VARIANT isTrue="1">один</VARIANT>
+        </QUESTION>
+        <QUESTION text="Сколько pin'ов может иметь механический переключатель?">
+            <VARIANT isTrue="0">один</VARIANT>
+            <VARIANT isTrue="0">два</VARIANT>
+            <VARIANT isTrue="1">три</VARIANT>
+			<VARIANT isTrue="0">четыре</VARIANT>
+			<VARIANT isTrue="1">пять</VARIANT>
+        </QUESTION>
+        <QUESTION text="Лифы - металлические скобы, которые в ненажатом состоянии разомкнуты.">
+            <VARIANT isTrue="1">да</VARIANT>
+            <VARIANT isTrue="0">нет</VARIANT>
+        </QUESTION>
+        <QUESTION text="Выберите существующие типы переключателей:">
+			<VARIANT isTrue="0">гальванические</VARIANT>
+            <VARIANT isTrue="1">тактильные</VARIANT>
+            <VARIANT isTrue="1">линейные</VARIANT>
+            <VARIANT isTrue="0">импульсные</VARIANT>
+			<VARIANT isTrue="1">сайлент</VARIANT>
+			<VARIANT isTrue="0">магнитические</VARIANT>
+			<VARIANT isTrue="1">кликающие</VARIANT>
+        </QUESTION>
+        <QUESTION text="Что отличает тактильный свитч от линейного?">
+            <VARIANT isTrue="0">наличие Click-Jacket'а</VARIANT>
+            <VARIANT isTrue="0">наличие стабилизатора</VARIANT>
+            <VARIANT isTrue="1">наличие неровности на слайдере</VARIANT>
+        </QUESTION>
+        <QUESTION text="Какие переключатели имеют тактильную отдачу?">
+            <VARIANT isTrue="0">линейные</VARIANT>
+            <VARIANT isTrue="1">тактильные</VARIANT>
+            <VARIANT isTrue="0">сайлент</VARIANT>
+            <VARIANT isTrue="1">кликающие</VARIANT>
+        </QUESTION>
+        <QUESTION text="Выберите материалы, из которых может быть сделан переключатель:">
+            <VARIANT isTrue="1">полиоксиметилен(POM)</VARIANT>
+            <VARIANT isTrue="1">нейлон</VARIANT>
+            <VARIANT isTrue="1">сверхвысокомолекулярный полиэтилен высокой плотности(UHMWPE)</VARIANT>
+            <VARIANT isTrue="0">алюминий 6061</VARIANT>
+            <VARIANT isTrue="1">поликарбонат</VARIANT>
+            <VARIANT isTrue="0">латунь</VARIANT>
+        </QUESTION>
+		<QUESTION text="Какой компании принадлежат права на переключатели Topre?">
+            <VARIANT isTrue="1">fujitsu</VARIANT>
+        </QUESTION>
+		<QUESTION text="Бывают ли у Varmilo электростатические переключатели?">
+            <VARIANT isTrue="1">да</VARIANT>
+			<VARIANT isTrue="0">нет</VARIANT>
+        </QUESTION>
+		<QUESTION text="Чем отличаются speed-переключатели от обычных?">
+            <VARIANT isTrue="0">материалами изготовления</VARIANT>
+			<VARIANT isTrue="0">точкой срабатывания</VARIANT>
+			<VARIANT isTrue="0">граммовкой пружины</VARIANT>
+        </QUESTION>
+		<QUESTION text="Бывают ли у Varmilo электростатические переключатели?">
+            <VARIANT isTrue="1">да</VARIANT>
+			<VARIANT isTrue="0">нет</VARIANT>
+        </QUESTION>
+		<QUESTION text="Существуют ли Varmilo на электростатических переключателях?">
+            <VARIANT isTrue="1">да</VARIANT>
+			<VARIANT isTrue="0">нет</VARIANT>
+        </QUESTION>
+    </THEMA>
+
+
+    <THEMA text="Кейкапы">
+        <QUESTION text="Самые распространенные материалы кейкапов - керамика и POM-пластик">
+            <VARIANT isTrue="0">да</VARIANT>
+            <VARIANT isTrue="1">нет</VARIANT>
+        </QUESTION>
+        <QUESTION text="Выберите самые распространенные материалы кейкапов:">
+            <VARIANT isTrue="1">ABS</VARIANT>
+            <VARIANT isTrue="0">POM</VARIANT>
+            <VARIANT isTrue="0">Керамика</VARIANT>
+			<VARIANT isTrue="0">Алюминий</VARIANT>
+			<VARIANT isTrue="1">PBT</VARIANT>
+			<VARIANT isTrue="0">Дерево</VARIANT>
+        </QUESTION>
+        <QUESTION text="PBT кейкапы не желтеют со временем">
+            <VARIANT isTrue="1">да</VARIANT>
+            <VARIANT isTrue="0">нет</VARIANT>
+        </QUESTION>
+		<QUESTION text="ABS кейкапы не желтеют со временем">
+            <VARIANT isTrue="0">да</VARIANT>
+            <VARIANT isTrue="1">нет</VARIANT>
+        </QUESTION>
+		<QUESTION text="ABS кейкапы рано или поздно начинают блестеть">
+            <VARIANT isTrue="1">да</VARIANT>
+            <VARIANT isTrue="0">нет</VARIANT>
+        </QUESTION>
+        <QUESTION text="Размеры колпачков принято измерять в:">
+            <VARIANT isTrue="1">юнитах</VARIANT>
+        </QUESTION>
+        <QUESTION text="Как называется профиль, в котором кейкапы одного ряда выше другого?">
+            <VARIANT isTrue="1">stepped profile</VARIANT>
+			<VARIANT isTrue="0">unicorn profile</VARIANT>
+        </QUESTION>
+		<QUESTION text="Как называется профиль, в котором клавиши всех рядов одинаковые по высоте?">
+            <VARIANT isTrue="0">stepped profile</VARIANT>
+			<VARIANT isTrue="1">unicorn profile</VARIANT>
+        </QUESTION>
+		<QUESTION text="Компания GMK выпускает свои колпачки на оборудовании Cherry">
+            <VARIANT isTrue="1">да</VARIANT>
+            <VARIANT isTrue="0">нет</VARIANT>
+        </QUESTION>
+		<QUESTION text="Какая компания первой начала производство SA кейкапов?">
+            <VARIANT isTrue="0">MiTo</VARIANT>
+            <VARIANT isTrue="0">GMK</VARIANT>
+			<VARIANT isTrue="1">Signature Plastics</VARIANT>
+        </QUESTION>
+		<QUESTION text="Relegendable кейкапы позволяют установить свои надписи">
+            <VARIANT isTrue="1">да</VARIANT>
+            <VARIANT isTrue="0">нет</VARIANT>
+        </QUESTION>
+		<QUESTION text="Двойное литьё из PBT сложнее, так как он легкоплавкий">
+            <VARIANT isTrue="0">да</VARIANT>
+            <VARIANT isTrue="1">нет</VARIANT>
+        </QUESTION>
+		<QUESTION text="Двойное литьё - способ нанесения символов путем переноса красителя на пластик под высокой температурой">
+            <VARIANT isTrue="0">да</VARIANT>
+            <VARIANT isTrue="1">нет</VARIANT>
+        </QUESTION>
+		<QUESTION text="При тампонной печати символы не стираются">
+            <VARIANT isTrue="0">да</VARIANT>
+            <VARIANT isTrue="1">нет</VARIANT>
+        </QUESTION>
+		<QUESTION text="Сколько юнитов пробел у WKL-клавиатур?">
+            <VARIANT isTrue="1">семь</VARIANT>
+        </QUESTION>
+    </THEMA>
+
+
+    <THEMA text="Стабилизаторы">
+        <QUESTION text="Стабилизаторы есть во всех современных клавиатурах, даже в мембранных">
+            <VARIANT isTrue="1">да</VARIANT>
+            <VARIANT isTrue="0">нет</VARIANT>
+        </QUESTION>
+        <QUESTION text="В современных механических клавиатурах обычно установлен один из двух видов стабилизаторов:">
+            <VARIANT isTrue="0">Gazzew</VARIANT>
+            <VARIANT isTrue="1">Cherry</VARIANT>
+			<VARIANT isTrue="0">Aeboards</VARIANT>
+			<VARIANT isTrue="1">Costar</VARIANT>
+        </QUESTION>
+        <QUESTION text="Выберите методы крепления стабилизаторов типа Cherry:">
+            <VARIANT isTrue="0">PBC mount</VARIANT>
+            <VARIANT isTrue="1">PCB mount</VARIANT>
+            <VARIANT isTrue="0">Keycap mount</VARIANT>
+			<VARIANT isTrue="0">Plate mount</VARIANT>
+        </QUESTION>
+		<QUESTION text="Стабилизаторы этого типа прикручиваются к плате клавиатуры">
+            <VARIANT isTrue="0">Plate mount</VARIANT>
+            <VARIANT isTrue="1">PCB mount</VARIANT>
+        </QUESTION>
+		<QUESTION text="Стабилизаторы этого типа устанавливаются в плейт и держатся в нем на защелках">
+            <VARIANT isTrue="1">Plate mount</VARIANT>
+            <VARIANT isTrue="0">PCB mount</VARIANT>
+        </QUESTION>
+		<QUESTION text="Размеры стабилизаторов измеряются в юнитах">
+            <VARIANT isTrue="1">да</VARIANT>
+            <VARIANT isTrue="0">нет</VARIANT>
+        </QUESTION>
+        <QUESTION text="Сколько юнитов пробел нужен в WKL и TSANGAN раскладке?">
+            <VARIANT isTrue="1">семь</VARIANT>
+        </QUESTION>
+        <QUESTION text="Какие интерфейсы существуют?">
+            <VARIANT isTrue="1">OnClickListener</VARIANT>
+            <VARIANT isTrue="1">OnLongClickListener</VARIANT>
+            <VARIANT isTrue="0">OnShortClickListener</VARIANT>
+        </QUESTION>
+        <QUESTION text="Какой из интерфейсов не существует?">
+            <VARIANT isTrue="1">OnCreateListener</VARIANT>
+            <VARIANT isTrue="0">OnKeyListener</VARIANT>
+            <VARIANT isTrue="0">OnCreateContextMenuListener</VARIANT>
+        </QUESTION>
+        <QUESTION text="Какой слушатель отлавливает нажатия?">
+            <VARIANT isTrue="1">OnTouchListener</VARIANT>
+            <VARIANT isTrue="0">OnTouch</VARIANT>
+            <VARIANT isTrue="0">OnPressListener</VARIANT>
+        </QUESTION>
+        <QUESTION text="Сколько существует способов обработки нажатий на кнопку?">
+            <VARIANT isTrue="0">один</VARIANT>
+            <VARIANT isTrue="0">ноль</VARIANT>
+            <VARIANT isTrue="1">несколько</VARIANT>
+        </QUESTION>
+        <QUESTION text="До какого момента ожидает слушатель?">
+            <VARIANT isTrue="0">пока пользователь не откроет приложение</VARIANT>
+            <VARIANT isTrue="0">пока не нажата клавиша</VARIANT>
+            <VARIANT isTrue="1">пока не получено событие</VARIANT>
+        </QUESTION>
+        <QUESTION text="Какой класс содержит интерфейсы для слушателей?">
+            <VARIANT isTrue="1">View</VARIANT>
+        </QUESTION>
+    </THEMA>
+</TESTS>
