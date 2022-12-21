@@ -43,27 +43,26 @@ namespace MKG
             this.NextQuestionFromCB = new System.Windows.Forms.Button();
             this.QuestionsPanel = new System.Windows.Forms.Panel();
             this.AnswersPanel = new System.Windows.Forms.Panel();
-            this.TitlePanel = new System.Windows.Forms.Panel();
             this.typesTabControl = new System.Windows.Forms.TabControl();
             this.tbPage = new System.Windows.Forms.TabPage();
-            this.rbPage = new System.Windows.Forms.TabPage();
-            this.cbPage = new System.Windows.Forms.TabPage();
-            this.answerTextBox = new System.Windows.Forms.TextBox();
-            this.answer1RB = new System.Windows.Forms.RadioButton();
-            this.answer1CB = new System.Windows.Forms.CheckBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.NextQuestionFromRadio = new System.Windows.Forms.Button();
             this.NextQuestionFromTB = new System.Windows.Forms.Button();
+            this.answerTextBox = new System.Windows.Forms.TextBox();
+            this.rbPage = new System.Windows.Forms.TabPage();
+            this.NextQuestionFromRadio = new System.Windows.Forms.Button();
+            this.RadioPanel = new System.Windows.Forms.Panel();
+            this.cbPage = new System.Windows.Forms.TabPage();
+            this.CheckPanel = new System.Windows.Forms.Panel();
+            this.TitlePanel = new System.Windows.Forms.Panel();
             this.ReadyButton = new System.Windows.Forms.Button();
+            this.resultPage = new System.Windows.Forms.TabPage();
             this.ThemasPanel.SuspendLayout();
             this.QuestionsPanel.SuspendLayout();
             this.AnswersPanel.SuspendLayout();
-            this.TitlePanel.SuspendLayout();
             this.typesTabControl.SuspendLayout();
             this.tbPage.SuspendLayout();
             this.rbPage.SuspendLayout();
             this.cbPage.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.TitlePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // ThemasPanel
@@ -171,6 +170,7 @@ namespace MKG
             this.NextQuestionFromCB.TabIndex = 7;
             this.NextQuestionFromCB.Text = "Следующий вопрос";
             this.NextQuestionFromCB.UseVisualStyleBackColor = true;
+            this.NextQuestionFromCB.Click += new System.EventHandler(this.NextQuestion_Click);
             // 
             // QuestionsPanel
             // 
@@ -192,21 +192,12 @@ namespace MKG
             this.AnswersPanel.Size = new System.Drawing.Size(610, 379);
             this.AnswersPanel.TabIndex = 1;
             // 
-            // TitlePanel
-            // 
-            this.TitlePanel.Controls.Add(this.ReadyButton);
-            this.TitlePanel.Controls.Add(this.QuestionNameLabel);
-            this.TitlePanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.TitlePanel.Location = new System.Drawing.Point(0, 0);
-            this.TitlePanel.Name = "TitlePanel";
-            this.TitlePanel.Size = new System.Drawing.Size(610, 71);
-            this.TitlePanel.TabIndex = 0;
-            // 
             // typesTabControl
             // 
             this.typesTabControl.Controls.Add(this.tbPage);
             this.typesTabControl.Controls.Add(this.rbPage);
             this.typesTabControl.Controls.Add(this.cbPage);
+            this.typesTabControl.Controls.Add(this.resultPage);
             this.typesTabControl.Location = new System.Drawing.Point(3, 0);
             this.typesTabControl.Name = "typesTabControl";
             this.typesTabControl.SelectedIndex = 0;
@@ -216,6 +207,7 @@ namespace MKG
             // 
             // tbPage
             // 
+            this.tbPage.BackColor = System.Drawing.Color.OrangeRed;
             this.tbPage.Controls.Add(this.NextQuestionFromTB);
             this.tbPage.Controls.Add(this.answerTextBox);
             this.tbPage.Location = new System.Drawing.Point(4, 22);
@@ -224,77 +216,6 @@ namespace MKG
             this.tbPage.Size = new System.Drawing.Size(599, 353);
             this.tbPage.TabIndex = 0;
             this.tbPage.Text = "tabPage1";
-            this.tbPage.UseVisualStyleBackColor = true;
-            // 
-            // rbPage
-            // 
-            this.rbPage.Controls.Add(this.NextQuestionFromRadio);
-            this.rbPage.Controls.Add(this.panel1);
-            this.rbPage.Location = new System.Drawing.Point(4, 22);
-            this.rbPage.Name = "rbPage";
-            this.rbPage.Padding = new System.Windows.Forms.Padding(3);
-            this.rbPage.Size = new System.Drawing.Size(599, 353);
-            this.rbPage.TabIndex = 1;
-            this.rbPage.Text = "tabPage2";
-            this.rbPage.UseVisualStyleBackColor = true;
-            // 
-            // cbPage
-            // 
-            this.cbPage.Controls.Add(this.answer1CB);
-            this.cbPage.Controls.Add(this.NextQuestionFromCB);
-            this.cbPage.Location = new System.Drawing.Point(4, 22);
-            this.cbPage.Name = "cbPage";
-            this.cbPage.Size = new System.Drawing.Size(599, 353);
-            this.cbPage.TabIndex = 2;
-            this.cbPage.Text = "tabPage3";
-            this.cbPage.UseVisualStyleBackColor = true;
-            // 
-            // answerTextBox
-            // 
-            this.answerTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.answerTextBox.Location = new System.Drawing.Point(192, 124);
-            this.answerTextBox.Name = "answerTextBox";
-            this.answerTextBox.Size = new System.Drawing.Size(210, 26);
-            this.answerTextBox.TabIndex = 1;
-            // 
-            // answer1RB
-            // 
-            this.answer1RB.AutoSize = true;
-            this.answer1RB.Location = new System.Drawing.Point(58, 3);
-            this.answer1RB.Name = "answer1RB";
-            this.answer1RB.Size = new System.Drawing.Size(85, 17);
-            this.answer1RB.TabIndex = 0;
-            this.answer1RB.TabStop = true;
-            this.answer1RB.Text = "radioButton1";
-            this.answer1RB.UseVisualStyleBackColor = true;
-            // 
-            // answer1CB
-            // 
-            this.answer1CB.AutoSize = true;
-            this.answer1CB.Location = new System.Drawing.Point(207, 18);
-            this.answer1CB.Name = "answer1CB";
-            this.answer1CB.Size = new System.Drawing.Size(80, 17);
-            this.answer1CB.TabIndex = 0;
-            this.answer1CB.Text = "checkBox1";
-            this.answer1CB.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.answer1RB);
-            this.panel1.Location = new System.Drawing.Point(149, 6);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 100);
-            this.panel1.TabIndex = 1;
-            // 
-            // NextQuestionFromRadio
-            // 
-            this.NextQuestionFromRadio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.NextQuestionFromRadio.Location = new System.Drawing.Point(470, 316);
-            this.NextQuestionFromRadio.Name = "NextQuestionFromRadio";
-            this.NextQuestionFromRadio.Size = new System.Drawing.Size(123, 31);
-            this.NextQuestionFromRadio.TabIndex = 8;
-            this.NextQuestionFromRadio.Text = "Следующий вопрос";
-            this.NextQuestionFromRadio.UseVisualStyleBackColor = true;
             // 
             // NextQuestionFromTB
             // 
@@ -305,16 +226,92 @@ namespace MKG
             this.NextQuestionFromTB.TabIndex = 8;
             this.NextQuestionFromTB.Text = "Следующий вопрос";
             this.NextQuestionFromTB.UseVisualStyleBackColor = true;
+            this.NextQuestionFromTB.Click += new System.EventHandler(this.NextQuestion_Click);
+            // 
+            // answerTextBox
+            // 
+            this.answerTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.answerTextBox.Location = new System.Drawing.Point(192, 124);
+            this.answerTextBox.Name = "answerTextBox";
+            this.answerTextBox.Size = new System.Drawing.Size(210, 26);
+            this.answerTextBox.TabIndex = 1;
+            // 
+            // rbPage
+            // 
+            this.rbPage.BackColor = System.Drawing.Color.Gold;
+            this.rbPage.Controls.Add(this.NextQuestionFromRadio);
+            this.rbPage.Controls.Add(this.RadioPanel);
+            this.rbPage.Location = new System.Drawing.Point(4, 22);
+            this.rbPage.Name = "rbPage";
+            this.rbPage.Padding = new System.Windows.Forms.Padding(3);
+            this.rbPage.Size = new System.Drawing.Size(599, 353);
+            this.rbPage.TabIndex = 1;
+            this.rbPage.Text = "tabPage2";
+            // 
+            // NextQuestionFromRadio
+            // 
+            this.NextQuestionFromRadio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.NextQuestionFromRadio.Location = new System.Drawing.Point(470, 316);
+            this.NextQuestionFromRadio.Name = "NextQuestionFromRadio";
+            this.NextQuestionFromRadio.Size = new System.Drawing.Size(123, 31);
+            this.NextQuestionFromRadio.TabIndex = 8;
+            this.NextQuestionFromRadio.Text = "Следующий вопрос";
+            this.NextQuestionFromRadio.UseVisualStyleBackColor = true;
+            this.NextQuestionFromRadio.Click += new System.EventHandler(this.NextQuestion_Click);
+            // 
+            // RadioPanel
+            // 
+            this.RadioPanel.Location = new System.Drawing.Point(6, 6);
+            this.RadioPanel.Name = "RadioPanel";
+            this.RadioPanel.Size = new System.Drawing.Size(585, 304);
+            this.RadioPanel.TabIndex = 1;
+            // 
+            // cbPage
+            // 
+            this.cbPage.BackColor = System.Drawing.Color.Lime;
+            this.cbPage.Controls.Add(this.CheckPanel);
+            this.cbPage.Controls.Add(this.NextQuestionFromCB);
+            this.cbPage.Location = new System.Drawing.Point(4, 22);
+            this.cbPage.Name = "cbPage";
+            this.cbPage.Size = new System.Drawing.Size(599, 353);
+            this.cbPage.TabIndex = 2;
+            this.cbPage.Text = "tabPage3";
+            // 
+            // CheckPanel
+            // 
+            this.CheckPanel.Location = new System.Drawing.Point(555, 290);
+            this.CheckPanel.Name = "CheckPanel";
+            this.CheckPanel.Size = new System.Drawing.Size(36, 23);
+            this.CheckPanel.TabIndex = 8;
+            // 
+            // TitlePanel
+            // 
+            this.TitlePanel.Controls.Add(this.ReadyButton);
+            this.TitlePanel.Controls.Add(this.QuestionNameLabel);
+            this.TitlePanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.TitlePanel.Location = new System.Drawing.Point(0, 0);
+            this.TitlePanel.Name = "TitlePanel";
+            this.TitlePanel.Size = new System.Drawing.Size(610, 71);
+            this.TitlePanel.TabIndex = 0;
             // 
             // ReadyButton
             // 
-            this.ReadyButton.Location = new System.Drawing.Point(391, 3);
+            this.ReadyButton.Location = new System.Drawing.Point(516, 3);
             this.ReadyButton.Name = "ReadyButton";
-            this.ReadyButton.Size = new System.Drawing.Size(189, 87);
+            this.ReadyButton.Size = new System.Drawing.Size(64, 35);
             this.ReadyButton.TabIndex = 8;
             this.ReadyButton.Text = "Начать тестирование";
             this.ReadyButton.UseVisualStyleBackColor = true;
             this.ReadyButton.Click += new System.EventHandler(this.ReadyButton_Click);
+            // 
+            // resultPage
+            // 
+            this.resultPage.BackColor = System.Drawing.Color.MediumBlue;
+            this.resultPage.Location = new System.Drawing.Point(4, 22);
+            this.resultPage.Name = "resultPage";
+            this.resultPage.Size = new System.Drawing.Size(599, 353);
+            this.resultPage.TabIndex = 3;
+            this.resultPage.Text = "результаты";
             // 
             // TestForm
             // 
@@ -328,20 +325,18 @@ namespace MKG
             this.Name = "TestForm";
             this.Text = "TestForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.TestForm_Load);
             this.ThemasPanel.ResumeLayout(false);
             this.ThemasPanel.PerformLayout();
             this.QuestionsPanel.ResumeLayout(false);
             this.AnswersPanel.ResumeLayout(false);
-            this.TitlePanel.ResumeLayout(false);
-            this.TitlePanel.PerformLayout();
             this.typesTabControl.ResumeLayout(false);
             this.tbPage.ResumeLayout(false);
             this.tbPage.PerformLayout();
             this.rbPage.ResumeLayout(false);
             this.cbPage.ResumeLayout(false);
-            this.cbPage.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.TitlePanel.ResumeLayout(false);
+            this.TitlePanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -365,12 +360,12 @@ namespace MKG
         private System.Windows.Forms.TabPage tbPage;
         private System.Windows.Forms.TextBox answerTextBox;
         private System.Windows.Forms.TabPage rbPage;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RadioButton answer1RB;
+        private System.Windows.Forms.Panel RadioPanel;
         private System.Windows.Forms.TabPage cbPage;
-        private System.Windows.Forms.CheckBox answer1CB;
         private System.Windows.Forms.Button NextQuestionFromRadio;
         private System.Windows.Forms.Button NextQuestionFromTB;
         private System.Windows.Forms.Button ReadyButton;
+        private System.Windows.Forms.Panel CheckPanel;
+        private System.Windows.Forms.TabPage resultPage;
     }
 }
