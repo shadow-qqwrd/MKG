@@ -33,53 +33,18 @@ namespace MKG
             test = xmlParser.GetTestByThemaName(((Button)sender).Text);
             test.questions.Shuffle();
             QuestionNameLabel.Text = test.thema;
+            typesTabControl.Visible = false;
+            QuestionNumber = 0;
+            NextQuestionFromTB.Text = "Следующий вопрос";
+            NextQuestionFromCB.Text = "Следующий вопрос";
+            NextQuestionFromRadio.Text = "Следующий вопрос";
         }
 
         private void ReadyButton_Click(object sender, EventArgs e)
         {
-            int countTrue = 0;
             typesTabControl.Visible = true;
-            QuestionNameLabel.Text = test.questions[0].text.ToString();
-            int count = test.questions[0].variants.Count;
-            if (count == 1)
-            {
-                typesTabControl.SelectedIndex = 0;
-            }
-            else
-            {
-                for (int i = 0; i < count; i++)
-                {
-                    if (test.questions[0].variants[i].isTrue)
-                        countTrue++;
-                }
-
-                if (countTrue == 1)
-                {
-                    typesTabControl.SelectedIndex = 1;
-                    for (int i = 0; i < count; i++)
-                    {
-                        string nameButt = "answer" + i + "RB";
-                        RadioButton newButton = new RadioButton();
-                        newButton.Name = nameButt;
-                        newButton.Location = new Point(0, 40 * i);
-                        newButton.Text = test.questions[0].variants[i].text;
-                        RadioPanel.Controls.Add(newButton);
-                    }
-                }
-                else
-                {
-                    typesTabControl.SelectedIndex = 2;
-                    for (int i = 0; i < count; i++)
-                    {
-                        string nameButt = "answer" + i + "CB";
-                        CheckBox newButton = new CheckBox();
-                        newButton.Name = nameButt;
-                        newButton.Location = new Point(0, 40 * i);
-                        newButton.Text = test.questions[0].variants[i].text;
-                        CheckPanel.Controls.Add(newButton);
-                    }
-                }
-            }
+            NextQuestionMethod();
+            mark = 0;
         }
 
         private void TestForm_Load(object sender, EventArgs e)
@@ -89,10 +54,12 @@ namespace MKG
 
         private void NextQuestion_Click(object sender, EventArgs e)
         {
+            CheckTrueOrNot();
             if (NextQuestionFromTB.Text == "Закончить тестирование" || NextQuestionFromCB.Text == "Закончить тестирование" || NextQuestionFromRadio.Text == "Закончить тестирование")
             {
                 typesTabControl.SelectedIndex = 3;
-
+                QuestionNameLabel.Text = "Результаты тестирования";
+                ResultLabel.Text = $"Result - {mark} / 10 \n"+((mark > 8)?"Krasivo!":(mark > 6)?"Normalno":"Daun chitai teoriy");
             }
             switch (typesTabControl.SelectedIndex)
             {
@@ -110,12 +77,60 @@ namespace MKG
         }
         public void CheckTrueOrNot()
         {
+            int countTrue = 0;
+            int count = test.questions[QuestionNumber-1].variants.Count;
+            if (count == 1)
+            {
+                for(int i = 0; i < count; i++)
+                {
+                    if (test.questions[QuestionNumber-1].variants[i].ToString() == answerTextBox.Text)
+                            mark+=1;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    if (test.questions[QuestionNumber-1].variants[i].isTrue)
+                    {
+                        countTrue++;
+                    }
+                }
 
+                if (countTrue == 1)
+                {
+                    int i = 0;
+                    foreach (Control control in RadioPanel.Controls)
+                    {
+                        if (test.questions[QuestionNumber-1].variants[i].isTrue == true)
+                            if (((RadioButton)control).Checked == test.questions[QuestionNumber-1].variants[i].isTrue)
+                                mark+=1;
+                        i++;
+                    }
+                }
+                else
+                {
+                    int countTrueSelected = 0;
+                    int i = 0;
+                    
+                    //---------GAvno peredelat
+                    foreach (Control control in CheckPanel.Controls)
+                    {
+                        if (test.questions[QuestionNumber - 1].variants[i].isTrue)
+                        {
+                            if (((CheckBox)control).Checked == (test.questions[QuestionNumber - 1].variants[i].isTrue))
+                                countTrueSelected++;
+                        }
+                        i++;
+                    }
+                    
+                    mark += (float)countTrueSelected / countTrue;
+                }
+            }
         }
-
         public void NextQuestionMethod()
         {
-            if (QuestionNumber == 10)
+            if (QuestionNumber == 9)
             {
                 NextQuestionFromTB.Text = "Закончить тестирование";
                 NextQuestionFromCB.Text = "Закончить тестирование";
@@ -124,7 +139,6 @@ namespace MKG
             else
             {
                 int countTrue = 0;
-                typesTabControl.Visible = true;
                 QuestionNameLabel.Text = test.questions[QuestionNumber].text.ToString();
                 int count = test.questions[QuestionNumber].variants.Count;
                 if (count == 1)
@@ -142,33 +156,29 @@ namespace MKG
                     if (countTrue == 1)
                     {
                         typesTabControl.SelectedIndex = 1;
-                        //answer1RB.Text = test.questions[QuestionNumber].variants[0].text;
-                        //Point point = new Point(0, 0);
-                        //answer1RB.Location = point;
-                        for (int i = 1; i < count; i++)
+                        for (int i = 0; i < count; i++)
                         {
                             string nameButt = "answer" + i + "RB";
                             RadioButton newButton = new RadioButton();
                             newButton.Name = nameButt;
-                            newButton.Location = new Point(0, 40 * i);
                             newButton.Text = test.questions[QuestionNumber].variants[i].text;
                             RadioPanel.Controls.Add(newButton);
+                            newButton.AutoSize = true;
+                            newButton.Location = new Point(0, 40 * i);
                         }
                     }
                     else
                     {
                         typesTabControl.SelectedIndex = 2;
-                        //answer1CB.Text = test.questions[QuestionNumber].variants[0].text;
-                        //Point point = new Point();
-                        //answer1CB.Location = point;
                         for (int i = 0; i < count; i++)
                         {
                             string nameButt = "answer" + i + "CB";
                             CheckBox newButton = new CheckBox();
                             newButton.Name = nameButt;
-                            newButton.Location = new Point(0, 40 * i);
                             newButton.Text = test.questions[QuestionNumber].variants[i].text;
                             CheckPanel.Controls.Add(newButton);
+                            newButton.AutoSize = true;
+                            newButton.Location = new Point(0, 40 * i);
                         }
                     }
                 }

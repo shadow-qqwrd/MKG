@@ -29,7 +29,6 @@ namespace MKG
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.ThemasPanel = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.theoryButton = new System.Windows.Forms.Button();
@@ -37,8 +36,6 @@ namespace MKG
             this.thema1 = new System.Windows.Forms.Button();
             this.thema3 = new System.Windows.Forms.Button();
             this.thema2 = new System.Windows.Forms.Button();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.QuestionNameLabel = new System.Windows.Forms.Label();
             this.NextQuestionFromCB = new System.Windows.Forms.Button();
             this.QuestionsPanel = new System.Windows.Forms.Panel();
@@ -52,9 +49,10 @@ namespace MKG
             this.RadioPanel = new System.Windows.Forms.Panel();
             this.cbPage = new System.Windows.Forms.TabPage();
             this.CheckPanel = new System.Windows.Forms.Panel();
+            this.resultPage = new System.Windows.Forms.TabPage();
             this.TitlePanel = new System.Windows.Forms.Panel();
             this.ReadyButton = new System.Windows.Forms.Button();
-            this.resultPage = new System.Windows.Forms.TabPage();
+            this.ResultLabel = new System.Windows.Forms.Label();
             this.ThemasPanel.SuspendLayout();
             this.QuestionsPanel.SuspendLayout();
             this.AnswersPanel.SuspendLayout();
@@ -62,6 +60,7 @@ namespace MKG
             this.tbPage.SuspendLayout();
             this.rbPage.SuspendLayout();
             this.cbPage.SuspendLayout();
+            this.resultPage.SuspendLayout();
             this.TitlePanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -142,11 +141,6 @@ namespace MKG
             this.thema2.UseVisualStyleBackColor = true;
             this.thema2.Click += new System.EventHandler(this.thema_Click);
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
             // QuestionNameLabel
             // 
             this.QuestionNameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -164,7 +158,7 @@ namespace MKG
             // NextQuestionFromCB
             // 
             this.NextQuestionFromCB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.NextQuestionFromCB.Location = new System.Drawing.Point(473, 319);
+            this.NextQuestionFromCB.Location = new System.Drawing.Point(476, 319);
             this.NextQuestionFromCB.Name = "NextQuestionFromCB";
             this.NextQuestionFromCB.Size = new System.Drawing.Size(123, 31);
             this.NextQuestionFromCB.TabIndex = 7;
@@ -198,10 +192,11 @@ namespace MKG
             this.typesTabControl.Controls.Add(this.rbPage);
             this.typesTabControl.Controls.Add(this.cbPage);
             this.typesTabControl.Controls.Add(this.resultPage);
-            this.typesTabControl.Location = new System.Drawing.Point(3, 0);
+            this.typesTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.typesTabControl.Location = new System.Drawing.Point(0, 0);
             this.typesTabControl.Name = "typesTabControl";
             this.typesTabControl.SelectedIndex = 0;
-            this.typesTabControl.Size = new System.Drawing.Size(607, 379);
+            this.typesTabControl.Size = new System.Drawing.Size(610, 379);
             this.typesTabControl.TabIndex = 11;
             this.typesTabControl.Visible = false;
             // 
@@ -213,14 +208,14 @@ namespace MKG
             this.tbPage.Location = new System.Drawing.Point(4, 22);
             this.tbPage.Name = "tbPage";
             this.tbPage.Padding = new System.Windows.Forms.Padding(3);
-            this.tbPage.Size = new System.Drawing.Size(599, 353);
+            this.tbPage.Size = new System.Drawing.Size(602, 353);
             this.tbPage.TabIndex = 0;
             this.tbPage.Text = "tabPage1";
             // 
             // NextQuestionFromTB
             // 
             this.NextQuestionFromTB.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.NextQuestionFromTB.Location = new System.Drawing.Point(470, 316);
+            this.NextQuestionFromTB.Location = new System.Drawing.Point(476, 319);
             this.NextQuestionFromTB.Name = "NextQuestionFromTB";
             this.NextQuestionFromTB.Size = new System.Drawing.Size(123, 31);
             this.NextQuestionFromTB.TabIndex = 8;
@@ -244,14 +239,14 @@ namespace MKG
             this.rbPage.Location = new System.Drawing.Point(4, 22);
             this.rbPage.Name = "rbPage";
             this.rbPage.Padding = new System.Windows.Forms.Padding(3);
-            this.rbPage.Size = new System.Drawing.Size(599, 353);
+            this.rbPage.Size = new System.Drawing.Size(602, 353);
             this.rbPage.TabIndex = 1;
             this.rbPage.Text = "tabPage2";
             // 
             // NextQuestionFromRadio
             // 
             this.NextQuestionFromRadio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.NextQuestionFromRadio.Location = new System.Drawing.Point(470, 316);
+            this.NextQuestionFromRadio.Location = new System.Drawing.Point(473, 316);
             this.NextQuestionFromRadio.Name = "NextQuestionFromRadio";
             this.NextQuestionFromRadio.Size = new System.Drawing.Size(123, 31);
             this.NextQuestionFromRadio.TabIndex = 8;
@@ -273,16 +268,26 @@ namespace MKG
             this.cbPage.Controls.Add(this.NextQuestionFromCB);
             this.cbPage.Location = new System.Drawing.Point(4, 22);
             this.cbPage.Name = "cbPage";
-            this.cbPage.Size = new System.Drawing.Size(599, 353);
+            this.cbPage.Size = new System.Drawing.Size(602, 353);
             this.cbPage.TabIndex = 2;
             this.cbPage.Text = "tabPage3";
             // 
             // CheckPanel
             // 
-            this.CheckPanel.Location = new System.Drawing.Point(555, 290);
+            this.CheckPanel.Location = new System.Drawing.Point(12, 3);
             this.CheckPanel.Name = "CheckPanel";
-            this.CheckPanel.Size = new System.Drawing.Size(36, 23);
+            this.CheckPanel.Size = new System.Drawing.Size(582, 310);
             this.CheckPanel.TabIndex = 8;
+            // 
+            // resultPage
+            // 
+            this.resultPage.BackColor = System.Drawing.Color.MediumBlue;
+            this.resultPage.Controls.Add(this.ResultLabel);
+            this.resultPage.Location = new System.Drawing.Point(4, 22);
+            this.resultPage.Name = "resultPage";
+            this.resultPage.Size = new System.Drawing.Size(602, 353);
+            this.resultPage.TabIndex = 3;
+            this.resultPage.Text = "результаты";
             // 
             // TitlePanel
             // 
@@ -304,14 +309,16 @@ namespace MKG
             this.ReadyButton.UseVisualStyleBackColor = true;
             this.ReadyButton.Click += new System.EventHandler(this.ReadyButton_Click);
             // 
-            // resultPage
+            // ResultLabel
             // 
-            this.resultPage.BackColor = System.Drawing.Color.MediumBlue;
-            this.resultPage.Location = new System.Drawing.Point(4, 22);
-            this.resultPage.Name = "resultPage";
-            this.resultPage.Size = new System.Drawing.Size(599, 353);
-            this.resultPage.TabIndex = 3;
-            this.resultPage.Text = "результаты";
+            this.ResultLabel.AutoSize = true;
+            this.ResultLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ResultLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.ResultLabel.Location = new System.Drawing.Point(101, 112);
+            this.ResultLabel.Name = "ResultLabel";
+            this.ResultLabel.Size = new System.Drawing.Size(429, 108);
+            this.ResultLabel.TabIndex = 0;
+            this.ResultLabel.Text = "RESULT";
             // 
             // TestForm
             // 
@@ -335,6 +342,8 @@ namespace MKG
             this.tbPage.PerformLayout();
             this.rbPage.ResumeLayout(false);
             this.cbPage.ResumeLayout(false);
+            this.resultPage.ResumeLayout(false);
+            this.resultPage.PerformLayout();
             this.TitlePanel.ResumeLayout(false);
             this.TitlePanel.PerformLayout();
             this.ResumeLayout(false);
@@ -349,8 +358,6 @@ namespace MKG
         private System.Windows.Forms.Button thema1;
         private System.Windows.Forms.Button thema3;
         private System.Windows.Forms.Button thema2;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Label QuestionNameLabel;
         private System.Windows.Forms.Button NextQuestionFromCB;
         private System.Windows.Forms.Panel QuestionsPanel;
@@ -367,5 +374,6 @@ namespace MKG
         private System.Windows.Forms.Button ReadyButton;
         private System.Windows.Forms.Panel CheckPanel;
         private System.Windows.Forms.TabPage resultPage;
+        private System.Windows.Forms.Label ResultLabel;
     }
 }
