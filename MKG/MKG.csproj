@@ -109,5 +109,20 @@
   <ItemGroup>
     <None Include="Resources\test.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ext.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ext.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ext1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_remove_close_icon_181533.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cancel_close_remove_delete_icon_178071.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

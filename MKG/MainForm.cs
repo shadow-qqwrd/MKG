@@ -37,5 +37,10 @@ namespace MKG
             testForm.Show();
             this.Hide();
         }
+
+        private void exitBox_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

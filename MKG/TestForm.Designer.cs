@@ -29,10 +29,12 @@ namespace MKG
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.ThemasPanel = new System.Windows.Forms.Panel();
+            this.LeaveFromTest = new System.Windows.Forms.Button();
+            this.ReadyButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.theoryButton = new System.Windows.Forms.Button();
-            this.thema4 = new System.Windows.Forms.Button();
             this.thema1 = new System.Windows.Forms.Button();
             this.thema3 = new System.Windows.Forms.Button();
             this.thema2 = new System.Windows.Forms.Button();
@@ -50,9 +52,11 @@ namespace MKG
             this.cbPage = new System.Windows.Forms.TabPage();
             this.CheckPanel = new System.Windows.Forms.Panel();
             this.resultPage = new System.Windows.Forms.TabPage();
-            this.TitlePanel = new System.Windows.Forms.Panel();
-            this.ReadyButton = new System.Windows.Forms.Button();
             this.ResultLabel = new System.Windows.Forms.Label();
+            this.TitlePanel = new System.Windows.Forms.Panel();
+            this.SecondsLeftLabel = new System.Windows.Forms.Label();
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.exitBox = new System.Windows.Forms.PictureBox();
             this.ThemasPanel.SuspendLayout();
             this.QuestionsPanel.SuspendLayout();
             this.AnswersPanel.SuspendLayout();
@@ -62,14 +66,16 @@ namespace MKG
             this.cbPage.SuspendLayout();
             this.resultPage.SuspendLayout();
             this.TitlePanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.exitBox)).BeginInit();
             this.SuspendLayout();
             // 
             // ThemasPanel
             // 
             this.ThemasPanel.BackColor = System.Drawing.Color.Transparent;
+            this.ThemasPanel.Controls.Add(this.LeaveFromTest);
+            this.ThemasPanel.Controls.Add(this.ReadyButton);
             this.ThemasPanel.Controls.Add(this.label1);
             this.ThemasPanel.Controls.Add(this.theoryButton);
-            this.ThemasPanel.Controls.Add(this.thema4);
             this.ThemasPanel.Controls.Add(this.thema1);
             this.ThemasPanel.Controls.Add(this.thema3);
             this.ThemasPanel.Controls.Add(this.thema2);
@@ -78,6 +84,28 @@ namespace MKG
             this.ThemasPanel.Name = "ThemasPanel";
             this.ThemasPanel.Size = new System.Drawing.Size(190, 450);
             this.ThemasPanel.TabIndex = 6;
+            // 
+            // LeaveFromTest
+            // 
+            this.LeaveFromTest.Location = new System.Drawing.Point(43, 354);
+            this.LeaveFromTest.Name = "LeaveFromTest";
+            this.LeaveFromTest.Size = new System.Drawing.Size(126, 28);
+            this.LeaveFromTest.TabIndex = 9;
+            this.LeaveFromTest.Text = "Выйти из теста";
+            this.LeaveFromTest.UseVisualStyleBackColor = true;
+            this.LeaveFromTest.Visible = false;
+            this.LeaveFromTest.Click += new System.EventHandler(this.LeaveFromTest_Click);
+            // 
+            // ReadyButton
+            // 
+            this.ReadyButton.Location = new System.Drawing.Point(69, 313);
+            this.ReadyButton.Name = "ReadyButton";
+            this.ReadyButton.Size = new System.Drawing.Size(64, 35);
+            this.ReadyButton.TabIndex = 8;
+            this.ReadyButton.Text = "Начать тестирование";
+            this.ReadyButton.UseVisualStyleBackColor = true;
+            this.ReadyButton.Visible = false;
+            this.ReadyButton.Click += new System.EventHandler(this.ReadyButton_Click);
             // 
             // label1
             // 
@@ -93,23 +121,13 @@ namespace MKG
             // theoryButton
             // 
             this.theoryButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.theoryButton.Location = new System.Drawing.Point(8, 411);
+            this.theoryButton.Location = new System.Drawing.Point(12, 407);
             this.theoryButton.Name = "theoryButton";
             this.theoryButton.Size = new System.Drawing.Size(170, 31);
             this.theoryButton.TabIndex = 5;
             this.theoryButton.Text = "Перейти к теории";
             this.theoryButton.UseVisualStyleBackColor = true;
             this.theoryButton.Click += new System.EventHandler(this.theoryButton_Click);
-            // 
-            // thema4
-            // 
-            this.thema4.Location = new System.Drawing.Point(8, 176);
-            this.thema4.Name = "thema4";
-            this.thema4.Size = new System.Drawing.Size(179, 34);
-            this.thema4.TabIndex = 4;
-            this.thema4.Text = "Стабилизаторы";
-            this.thema4.UseVisualStyleBackColor = true;
-            this.thema4.Click += new System.EventHandler(this.thema_Click);
             // 
             // thema1
             // 
@@ -137,7 +155,7 @@ namespace MKG
             this.thema2.Name = "thema2";
             this.thema2.Size = new System.Drawing.Size(179, 35);
             this.thema2.TabIndex = 2;
-            this.thema2.Text = "Переключатели";
+            this.thema2.Text = "Переключатели и стабилизаторы";
             this.thema2.UseVisualStyleBackColor = true;
             this.thema2.Click += new System.EventHandler(this.thema_Click);
             // 
@@ -202,7 +220,7 @@ namespace MKG
             // 
             // tbPage
             // 
-            this.tbPage.BackColor = System.Drawing.Color.OrangeRed;
+            this.tbPage.BackColor = System.Drawing.Color.Transparent;
             this.tbPage.Controls.Add(this.NextQuestionFromTB);
             this.tbPage.Controls.Add(this.answerTextBox);
             this.tbPage.Location = new System.Drawing.Point(4, 22);
@@ -210,7 +228,6 @@ namespace MKG
             this.tbPage.Padding = new System.Windows.Forms.Padding(3);
             this.tbPage.Size = new System.Drawing.Size(602, 353);
             this.tbPage.TabIndex = 0;
-            this.tbPage.Text = "tabPage1";
             // 
             // NextQuestionFromTB
             // 
@@ -225,15 +242,15 @@ namespace MKG
             // 
             // answerTextBox
             // 
-            this.answerTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.answerTextBox.Location = new System.Drawing.Point(192, 124);
+            this.answerTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.answerTextBox.Location = new System.Drawing.Point(195, 139);
             this.answerTextBox.Name = "answerTextBox";
-            this.answerTextBox.Size = new System.Drawing.Size(210, 26);
+            this.answerTextBox.Size = new System.Drawing.Size(210, 35);
             this.answerTextBox.TabIndex = 1;
             // 
             // rbPage
             // 
-            this.rbPage.BackColor = System.Drawing.Color.Gold;
+            this.rbPage.BackColor = System.Drawing.Color.Transparent;
             this.rbPage.Controls.Add(this.NextQuestionFromRadio);
             this.rbPage.Controls.Add(this.RadioPanel);
             this.rbPage.Location = new System.Drawing.Point(4, 22);
@@ -241,7 +258,6 @@ namespace MKG
             this.rbPage.Padding = new System.Windows.Forms.Padding(3);
             this.rbPage.Size = new System.Drawing.Size(602, 353);
             this.rbPage.TabIndex = 1;
-            this.rbPage.Text = "tabPage2";
             // 
             // NextQuestionFromRadio
             // 
@@ -263,14 +279,13 @@ namespace MKG
             // 
             // cbPage
             // 
-            this.cbPage.BackColor = System.Drawing.Color.Lime;
+            this.cbPage.BackColor = System.Drawing.Color.Transparent;
             this.cbPage.Controls.Add(this.CheckPanel);
             this.cbPage.Controls.Add(this.NextQuestionFromCB);
             this.cbPage.Location = new System.Drawing.Point(4, 22);
             this.cbPage.Name = "cbPage";
             this.cbPage.Size = new System.Drawing.Size(602, 353);
             this.cbPage.TabIndex = 2;
-            this.cbPage.Text = "tabPage3";
             // 
             // CheckPanel
             // 
@@ -287,11 +302,22 @@ namespace MKG
             this.resultPage.Name = "resultPage";
             this.resultPage.Size = new System.Drawing.Size(602, 353);
             this.resultPage.TabIndex = 3;
-            this.resultPage.Text = "результаты";
+            // 
+            // ResultLabel
+            // 
+            this.ResultLabel.AutoSize = true;
+            this.ResultLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ResultLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.ResultLabel.Location = new System.Drawing.Point(101, 112);
+            this.ResultLabel.Name = "ResultLabel";
+            this.ResultLabel.Size = new System.Drawing.Size(172, 42);
+            this.ResultLabel.TabIndex = 0;
+            this.ResultLabel.Text = "RESULT";
             // 
             // TitlePanel
             // 
-            this.TitlePanel.Controls.Add(this.ReadyButton);
+            this.TitlePanel.Controls.Add(this.exitBox);
+            this.TitlePanel.Controls.Add(this.SecondsLeftLabel);
             this.TitlePanel.Controls.Add(this.QuestionNameLabel);
             this.TitlePanel.Dock = System.Windows.Forms.DockStyle.Top;
             this.TitlePanel.Location = new System.Drawing.Point(0, 0);
@@ -299,26 +325,34 @@ namespace MKG
             this.TitlePanel.Size = new System.Drawing.Size(610, 71);
             this.TitlePanel.TabIndex = 0;
             // 
-            // ReadyButton
+            // SecondsLeftLabel
             // 
-            this.ReadyButton.Location = new System.Drawing.Point(516, 3);
-            this.ReadyButton.Name = "ReadyButton";
-            this.ReadyButton.Size = new System.Drawing.Size(64, 35);
-            this.ReadyButton.TabIndex = 8;
-            this.ReadyButton.Text = "Начать тестирование";
-            this.ReadyButton.UseVisualStyleBackColor = true;
-            this.ReadyButton.Click += new System.EventHandler(this.ReadyButton_Click);
+            this.SecondsLeftLabel.AutoSize = true;
+            this.SecondsLeftLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SecondsLeftLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.SecondsLeftLabel.Location = new System.Drawing.Point(364, 9);
+            this.SecondsLeftLabel.Name = "SecondsLeftLabel";
+            this.SecondsLeftLabel.Size = new System.Drawing.Size(0, 24);
+            this.SecondsLeftLabel.TabIndex = 9;
+            this.SecondsLeftLabel.Visible = false;
             // 
-            // ResultLabel
+            // timer
             // 
-            this.ResultLabel.AutoSize = true;
-            this.ResultLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ResultLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.ResultLabel.Location = new System.Drawing.Point(101, 112);
-            this.ResultLabel.Name = "ResultLabel";
-            this.ResultLabel.Size = new System.Drawing.Size(429, 108);
-            this.ResultLabel.TabIndex = 0;
-            this.ResultLabel.Text = "RESULT";
+            this.timer.Interval = 1000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // exitBox
+            // 
+            this.exitBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.exitBox.BackColor = System.Drawing.Color.White;
+            this.exitBox.Image = global::MKG.Properties.Resources.ext1;
+            this.exitBox.Location = new System.Drawing.Point(555, 3);
+            this.exitBox.Name = "exitBox";
+            this.exitBox.Size = new System.Drawing.Size(48, 45);
+            this.exitBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.exitBox.TabIndex = 10;
+            this.exitBox.TabStop = false;
+            this.exitBox.Click += new System.EventHandler(this.exitBox_Click);
             // 
             // TestForm
             // 
@@ -329,6 +363,9 @@ namespace MKG
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.QuestionsPanel);
             this.Controls.Add(this.ThemasPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "TestForm";
             this.Text = "TestForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -346,6 +383,7 @@ namespace MKG
             this.resultPage.PerformLayout();
             this.TitlePanel.ResumeLayout(false);
             this.TitlePanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.exitBox)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -354,7 +392,6 @@ namespace MKG
         private System.Windows.Forms.Panel ThemasPanel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button theoryButton;
-        private System.Windows.Forms.Button thema4;
         private System.Windows.Forms.Button thema1;
         private System.Windows.Forms.Button thema3;
         private System.Windows.Forms.Button thema2;
@@ -375,5 +412,9 @@ namespace MKG
         private System.Windows.Forms.Panel CheckPanel;
         private System.Windows.Forms.TabPage resultPage;
         private System.Windows.Forms.Label ResultLabel;
+        private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.Label SecondsLeftLabel;
+        private System.Windows.Forms.Button LeaveFromTest;
+        private System.Windows.Forms.PictureBox exitBox;
     }
 }
