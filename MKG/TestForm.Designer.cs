@@ -122,11 +122,11 @@ namespace MKG
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(0, 9);
+            this.label1.Location = new System.Drawing.Point(-4, 4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(191, 31);
+            this.label1.Size = new System.Drawing.Size(199, 38);
             this.label1.TabIndex = 6;
             this.label1.Text = "Тестирование";
             // 

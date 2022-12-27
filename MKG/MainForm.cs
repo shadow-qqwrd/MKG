@@ -47,5 +47,11 @@ namespace MKG
         {
             this.WindowState = FormWindowState.Minimized;
         }
+
+        private void AboutProgramButton_Click(object sender, EventArgs e)
+        {
+            AboutProgramForm aboutProgramForm = new AboutProgramForm();
+            aboutProgramForm.Show();
+        }
     }
 }

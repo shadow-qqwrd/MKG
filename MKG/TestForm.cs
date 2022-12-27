@@ -79,7 +79,7 @@ namespace MKG
                 SecondsLeftLabel.Visible = false;
                 LeaveFromTest.Visible = false;
                 QuestionNameLabel.Text = "Результаты тестирования";
-                ResultLabel.Text = $"Количество правильных ответов - {mark} из 10 \n"+((mark > 8)?"Оценка: 5":(mark > 6)?"Оценка: 4":(mark > 5)?"Оценка: 3":"Оценка: 2");
+                ResultLabel.Text = $"Количество правильных ответов - {mark} из 10 \n"+((mark >= 9)?"Оценка: 5":(mark >= 8)?"Оценка: 4":(mark >= 5)?"Оценка: 3":"Оценка: 2");
 
             }
             switch (typesTabControl.SelectedIndex)
@@ -205,7 +205,7 @@ namespace MKG
                             newButton.Text = test.questions[QuestionNumber].variants[i].text;
                             RadioPanel.Controls.Add(newButton);
                             newButton.AutoSize = true;
-                            newButton.Location = new Point(0, 40 * i);
+                            newButton.Location = new Point(h+100, w+40 * i);
                             RadioPanel.Controls.Add(SecondsLeftLabel);
                             
                             SecondsLeftLabel.Visible = true;

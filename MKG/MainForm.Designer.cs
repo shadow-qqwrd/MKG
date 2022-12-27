@@ -53,6 +53,7 @@ namespace MKG
             // 
             // thema1
             // 
+            this.thema1.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.thema1.Location = new System.Drawing.Point(6, 45);
             this.thema1.Name = "thema1";
             this.thema1.Size = new System.Drawing.Size(179, 45);
@@ -75,9 +76,10 @@ namespace MKG
             // 
             // thema2
             // 
+            this.thema2.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.thema2.Location = new System.Drawing.Point(6, 96);
             this.thema2.Name = "thema2";
-            this.thema2.Size = new System.Drawing.Size(179, 35);
+            this.thema2.Size = new System.Drawing.Size(179, 46);
             this.thema2.TabIndex = 2;
             this.thema2.Text = "Переключатели и стабилизаторы";
             this.thema2.UseVisualStyleBackColor = true;
@@ -85,7 +87,8 @@ namespace MKG
             // 
             // thema3
             // 
-            this.thema3.Location = new System.Drawing.Point(6, 137);
+            this.thema3.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.thema3.Location = new System.Drawing.Point(6, 148);
             this.thema3.Name = "thema3";
             this.thema3.Size = new System.Drawing.Size(179, 33);
             this.thema3.TabIndex = 3;
@@ -110,27 +113,30 @@ namespace MKG
             // 
             // AboutProgramButton
             // 
-            this.AboutProgramButton.Location = new System.Drawing.Point(6, 176);
+            this.AboutProgramButton.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AboutProgramButton.Location = new System.Drawing.Point(6, 187);
             this.AboutProgramButton.Name = "AboutProgramButton";
             this.AboutProgramButton.Size = new System.Drawing.Size(179, 33);
             this.AboutProgramButton.TabIndex = 7;
             this.AboutProgramButton.Text = "О программе";
             this.AboutProgramButton.UseVisualStyleBackColor = true;
+            this.AboutProgramButton.Click += new System.EventHandler(this.AboutProgramButton_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label1.Location = new System.Drawing.Point(36, 9);
+            this.label1.Location = new System.Drawing.Point(36, 4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(113, 33);
+            this.label1.Size = new System.Drawing.Size(119, 40);
             this.label1.TabIndex = 6;
             this.label1.Text = "Теория";
             // 
             // TestForm
             // 
             this.TestForm.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.TestForm.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.TestForm.Location = new System.Drawing.Point(12, 455);
             this.TestForm.Name = "TestForm";
             this.TestForm.Size = new System.Drawing.Size(170, 31);
