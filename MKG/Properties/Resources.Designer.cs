@@ -83,6 +83,36 @@ namespace MKG.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap collapsearrow_colapso_4722 {
+            get {
+                object obj = ResourceManager.GetObject("collapsearrow_colapso_4722", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap collapsearrow_colapso_47221 {
+            get {
+                object obj = ResourceManager.GetObject("collapsearrow_colapso_47221", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на {\rtf1\adeflang1025\ansi\ansicpg1251\uc1\adeff31507\deff0\stshfdbch31506\stshfloch31506\stshfhich31506\stshfbi31507\deflang1049\deflangfe1049\themelang1049\themelangfe0\themelangcs0{\fonttbl{\f0\fbidi \froman\fcharset204\fprq2{\*\panose 02020603050405020304}Times New Roman;}
+        ///{\f0\fbidi \froman\fcharset204\fprq2{\*\panose 02020603050405020304}Times New Roman;}{\f37\fbidi \fswiss\fcharset204\fprq2{\*\panose 020f0502020204030204}Calibri;}{\f40\fbidi \fswiss\fcharset204\fprq2{\*\panose 020b0a04020102020204}Ari [остаток строки не уместился]&quot;;.
+        /// </summary>
+        internal static string criteria {
+            get {
+                return ResourceManager.GetString("criteria", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap delete_remove_close_icon_181533 {
             get {
                 object obj = ResourceManager.GetObject("delete_remove_close_icon_181533", resourceCulture);
@@ -106,6 +136,16 @@ namespace MKG.Properties {
         internal static System.Drawing.Bitmap ext1 {
             get {
                 object obj = ResourceManager.GetObject("ext1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sver {
+            get {
+                object obj = ResourceManager.GetObject("sver", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

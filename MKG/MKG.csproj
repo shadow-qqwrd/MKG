@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ficon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -104,6 +107,7 @@
     <None Include="Resources\123312123312.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\criteria.rtf" />
     <None Include="Resources\types.gif" />
   </ItemGroup>
   <ItemGroup>
@@ -123,6 +127,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\cancel_close_remove_delete_icon_178071.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\collapsearrow_colapso_4722.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\collapsearrow_colapso_47221.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sver.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ficon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -44,6 +44,7 @@ namespace MKG
 
         private void ReadyButton_Click(object sender, EventArgs e)
         {
+            EvaluationCriteriaRTB.Visible = false;
             typesTabControl.Visible = true;
             QuestionNumber = 0;
             NextQuestionMethod();
@@ -58,7 +59,11 @@ namespace MKG
 
         private void TestForm_Load(object sender, EventArgs e)
         {
-            QuestionNameLabel.Text = "Выберите тему для тестирования";
+            EvaluationCriteriaRTB.LoadFile("criteria.rtf");
+            typesTabControl.Appearance = TabAppearance.FlatButtons;
+            typesTabControl.ItemSize = new Size(0, 1);
+            typesTabControl.SizeMode = TabSizeMode.Fixed;
+            QuestionNameLabel.Text = "Критерии оценивания теста";
         }
 
         private void NextQuestion_Click(object sender, EventArgs e)
@@ -157,12 +162,13 @@ namespace MKG
                 int count = test.questions[QuestionNumber].variants.Count;
                 if (count == 1)
                 {
-                    int h = 0;
-                    int w = 0;
-                    h = typesTabControl.Height / 2;
-                    w = typesTabControl.Width / 2;
                     answerTextBox.Location = new Point(756, 442);
                     typesTabControl.SelectedIndex = 0;
+                    int h, w;
+                    h = typesTabControl.Height / 2 - QuestionNameLabel.Height / 2;
+                    w = typesTabControl.Width / 2 - QuestionNameLabel.Width / 2;
+                    RadioPanel.Controls.Add(QuestionNameLabel);
+                    QuestionNameLabel.Location = new Point(h + 50, w - 400);
                     SecondsLeftLabel.Visible = true;
                     seconds = 90;
                     timer.Start();
@@ -186,6 +192,11 @@ namespace MKG
                     if (countTrue == 1)
                     {
                         typesTabControl.SelectedIndex = 1;
+                        int h, w;
+                        h = typesTabControl.Height / 2 - QuestionNameLabel.Height / 2;
+                        w = typesTabControl.Width / 2 - QuestionNameLabel.Width / 2;
+                        RadioPanel.Controls.Add(QuestionNameLabel);
+                        QuestionNameLabel.Location = new Point(h+50, w-400);
                         for (int i = 0; i < count; i++)
                         {
                             string nameButt = "answer" + i + "RB";
@@ -195,6 +206,8 @@ namespace MKG
                             RadioPanel.Controls.Add(newButton);
                             newButton.AutoSize = true;
                             newButton.Location = new Point(0, 40 * i);
+                            RadioPanel.Controls.Add(SecondsLeftLabel);
+                            
                             SecondsLeftLabel.Visible = true;
                             seconds = 30;
                             timer.Start();
@@ -209,6 +222,11 @@ namespace MKG
                     else
                     {
                         typesTabControl.SelectedIndex = 2;
+                        int h, w;
+                        h = typesTabControl.Height / 2 - QuestionNameLabel.Height / 2;
+                        w = typesTabControl.Width / 2 - QuestionNameLabel.Width / 2;
+                        RadioPanel.Controls.Add(QuestionNameLabel);
+                        QuestionNameLabel.Location = new Point(h + 50, w - 400);
                         for (int i = 0; i < count; i++)
                         {
                             string nameButt = "answer" + i + "CB";
@@ -219,6 +237,7 @@ namespace MKG
                             newButton.AutoSize = true;
                             newButton.Location = new Point(0, 40 * i);
                             SecondsLeftLabel.Visible = true;
+                            RadioPanel.Controls.Add(SecondsLeftLabel);
                             seconds = 45;
                             timer.Start();
                             if (QuestionNumber == 9)
@@ -250,6 +269,7 @@ namespace MKG
             timer.Stop();
             if (DialogResult.OK == MessageBox.Show("Вы действительно хотите покинуть тест?", "Подтверждение", MessageBoxButtons.OKCancel, MessageBoxIcon.Question))
             {
+                EvaluationCriteriaRTB.Visible = true;
                 QuestionNumber = 0;
                 typesTabControl.Visible = false;
                 QuestionNameLabel.Text = "Выберите тему для тестирования";
@@ -266,6 +286,11 @@ namespace MKG
         private void exitBox_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void HidePB_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
     }
 }
