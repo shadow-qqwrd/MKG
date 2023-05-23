@@ -143,9 +143,59 @@ namespace MKG.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap f8 {
+            get {
+                object obj = ResourceManager.GetObject("f8", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap hide {
+            get {
+                object obj = ResourceManager.GetObject("hide", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_свернуть_окно_32 {
             get {
                 object obj = ResourceManager.GetObject("icons8-свернуть-окно-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap image {
+            get {
+                object obj = ResourceManager.GetObject("image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap keycap {
+            get {
+                object obj = ResourceManager.GetObject("keycap", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap show {
+            get {
+                object obj = ResourceManager.GetObject("show", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -185,6 +235,52 @@ namespace MKG.Properties {
             get {
                 object obj = ResourceManager.GetObject("types", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на {\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1049\deflangfe1049\deftab708{\fonttbl{\f0\fnil\fcharset204 Segoe UI;}{\f1\froman\fprq2\fcharset204 Times New Roman;}{\f2\fscript\fprq2\fcharset204 Comic Sans MS;}{\f3\fswiss\fprq2\fcharset204 Segoe UI;}{\f4\fnil\fcharset1 Cambria Math;}{\f5\fswiss\fprq2 Segoe UI;}{\f6\fnil\fcharset2 Symbol;}}
+        ///{\colortbl ;\red28\green30\blue33;\red255\green255\blue255;}
+        ///{\stylesheet{ Normal;}{\s1 heading 1;}}
+        ///{\*\generator Riched20 10.0.19041}{\*\mmathPr\mmathFont4\mdispDef1 [остаток строки не уместился]&quot;;.
+        /// </summary>
+        internal static string Кейкапы {
+            get {
+                return ResourceManager.GetString("Кейкапы", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на {\rtf1\adeflang1025\ansi\ansicpg1251\uc1\adeff0\deff0\stshfdbch0\stshfloch31506\stshfhich31506\stshfbi31506\deflang1049\deflangfe1049\themelang1049\themelangfe0\themelangcs0{\fonttbl{\f0\fbidi \froman\fcharset204\fprq2{\*\panose 02020603050405020304}Times New Roman;}
+        ///{\f2\fbidi \fmodern\fcharset204\fprq1{\*\panose 02070309020205020404}Courier New;}{\f3\fbidi \froman\fcharset2\fprq2{\*\panose 05050102010706020507}Symbol;}{\f10\fbidi \fnil\fcharset2\fprq2{\*\panose 05000000000000000000}Wingdings;}
+        ///{\f10\fbi [остаток строки не уместился]&quot;;.
+        /// </summary>
+        internal static string Переключатели_и_стабилизаторы {
+            get {
+                return ResourceManager.GetString("Переключатели_и_стабилизаторы", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на {\rtf1\adeflang1025\ansi\ansicpg1251\uc1\adeff0\deff0\stshfdbch0\stshfloch31506\stshfhich31506\stshfbi31506\deflang1049\deflangfe1049\themelang1049\themelangfe0\themelangcs0{\fonttbl{\f0\fbidi \froman\fcharset204\fprq2{\*\panose 02020603050405020304}Times New Roman;}
+        ///{\f2\fbidi \fmodern\fcharset204\fprq1{\*\panose 02070309020205020404}Courier New;}{\f3\fbidi \froman\fcharset2\fprq2{\*\panose 05050102010706020507}Symbol;}{\f10\fbidi \fnil\fcharset2\fprq2{\*\panose 05000000000000000000}Wingdings;}
+        ///{\f10\fbi [остаток строки не уместился]&quot;;.
+        /// </summary>
+        internal static string Стабилизаторы {
+            get {
+                return ResourceManager.GetString("Стабилизаторы", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на {\rtf1\ansi\ansicpg1251\deff0\nouicompat\deflang1049\deflangfe1049\deftab708{\fonttbl{\f0\fswiss\fprq2\fcharset204 Segoe UI;}{\f1\froman\fprq2\fcharset204 Times New Roman;}{\f2\fnil\fcharset204 Times New Roman;}{\f3\fnil\fcharset204 Microsoft Sans Serif;}{\f4\fswiss\fprq2\fcharset204 Calibri;}{\f5\fnil\fcharset2 Symbol;}}
+        ///{\colortbl ;\red28\green30\blue33;\red0\green0\blue255;}
+        ///{\stylesheet{ Normal;}{\s1 heading 1;}}
+        ///{\*\generator Riched20 10.0.19041}{\*\mmathPr\mdispDef1\mwrapIndent1440 }\viewkind4\uc1  [остаток строки не уместился]&quot;;.
+        /// </summary>
+        internal static string Что_такое_механическая_клавиатура {
+            get {
+                return ResourceManager.GetString("Что_такое_механическая_клавиатура", resourceCulture);
             }
         }
     }

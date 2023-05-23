@@ -28,10 +28,10 @@ namespace MKG
 
         private void AboutProgramForm_Load(object sender, EventArgs e)
         {
-            AboutRTB.Text = "Обучающая программа «Разновидности механических клавиатур, их техническое обслуживание и компоненты»\n \n\n\n\nРазработчик: Шевцов Артём Олегович, группа ПКС-91\n\n\n\n\n version 1.0\n\n";
+            AboutRTB.Text = "\n \n \n\n\n\n\n\nОбучающая программа «Разновидности механических клавиатур, их техническое обслуживание и компоненты»\n \n\n\n\nРазработчик: Шевцов Артём Олегович, группа ПКС-91\n\n\n\n\n version 1.0.2911\n\n";
             AboutRTB.SelectAll();
             AboutRTB.SelectionAlignment = HorizontalAlignment.Center;
-            AboutRTB.SelectionFont = new Font("Lucinda Console", 48);
+            AboutRTB.SelectionFont = new Font("Lucinda Console", 24);
         }
 
         private void TheoryForm_Click(object sender, EventArgs e)

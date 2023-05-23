@@ -1,26 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
+using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Media;
 using System.Windows.Forms;
 
 namespace MKG
 {
     public partial class TestForm : Form
     {
+        int h, w;
         int QuestionNumber = 0;
         float mark = 0;
         Test test = new Test();
         int seconds = 0;
+
         public TestForm()
         {
+            this.DoubleBuffered = true;
+            
             InitializeComponent();
         }
 
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                var cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;
+                return cp;
+            }
+        }
         private void theoryButton_Click(object sender, EventArgs e)
         {
             MainForm mainForm = new MainForm();
@@ -30,22 +40,20 @@ namespace MKG
 
         private void thema_Click(object sender, EventArgs e)
         {
+            QuestionLabel.Visible = false;
             ReadyButton.Visible = true;
             XmlParser xmlParser = new XmlParser();
             test = xmlParser.GetTestByThemaName(((Button)sender).Text);
             test.questions.Shuffle();
-            QuestionNameLabel.Text = test.thema;
-            typesTabControl.Visible = false;
-            NextQuestionFromTB.Text = "Следующий вопрос";
-            NextQuestionFromCB.Text = "Следующий вопрос";
-            NextQuestionFromRadio.Text = "Следующий вопрос";
-            
+            EvaluationCriteriaRTB.Visible = false;
+            NextQuestionButton.Text = "Следующий вопрос";
         }
 
         private void ReadyButton_Click(object sender, EventArgs e)
         {
+            QuestionLabel.Visible = true;
+            NextQuestionButton.Visible = true;
             EvaluationCriteriaRTB.Visible = false;
-            typesTabControl.Visible = true;
             QuestionNumber = 0;
             NextQuestionMethod();
             mark = 0;
@@ -60,59 +68,57 @@ namespace MKG
         private void TestForm_Load(object sender, EventArgs e)
         {
             EvaluationCriteriaRTB.LoadFile("criteria.rtf");
-            typesTabControl.Appearance = TabAppearance.FlatButtons;
-            typesTabControl.ItemSize = new Size(0, 1);
-            typesTabControl.SizeMode = TabSizeMode.Fixed;
-            QuestionNameLabel.Text = "Критерии оценивания теста";
+            h = AnswersPanel.Height / 2 - QuestionLabel.Height / 2 - 250;
+            w = AnswersPanel.Width / 2 - QuestionLabel.Width / 2 - 300;
+            SetRoundedShape(thema1, 20);
+            SetRoundedShape(thema2, 20);
+            SetRoundedShape(thema3, 20);
+            SetRoundedShape(theoryButton, 20);
+            SetRoundedShape(NextQuestionButton, 20);
+            SetRoundedShape(ReadyButton, 20);
         }
 
         private void NextQuestion_Click(object sender, EventArgs e)
         {
             CheckTrueOrNot();
-            if (NextQuestionFromTB.Text == "Закончить тестирование" || NextQuestionFromCB.Text == "Закончить тестирование" || NextQuestionFromRadio.Text == "Закончить тестирование")
+            if (NextQuestionButton.Text == "Закончить тестирование")
             {
-                typesTabControl.SelectedIndex = 3;
                 thema1.Enabled = true;
                 thema2.Enabled = true;
                 thema3.Enabled = true;
                 theoryButton.Enabled = true;
                 SecondsLeftLabel.Visible = false;
                 LeaveFromTest.Visible = false;
-                QuestionNameLabel.Text = "Результаты тестирования";
-                ResultLabel.Text = $"Количество правильных ответов - {mark} из 10 \n"+((mark >= 9)?"Оценка: 5":(mark >= 8)?"Оценка: 4":(mark >= 5)?"Оценка: 3":"Оценка: 2");
-
+                QuestionLabel.Text = $"Количество правильных ответов - {mark} из 10 \n"+((mark > 8)?"Оценка: 5":(mark > 6)?"Оценка: 4":(mark > 5)?"Оценка: 3":"Оценка: 2");
+                NextQuestionButton.Visible = false;
             }
-            switch (typesTabControl.SelectedIndex)
-            {
-                case 0:
-                    answerTextBox.Text = "";
-                    break;
-                case 1:
-                    RadioPanel.Controls.Clear();
-                    break;
-                case 2:
-                    CheckPanel.Controls.Clear();
-                    break;
-            }
+            Clear();
             NextQuestionMethod();
         }
         public void CheckTrueOrNot()
         {
             int countTrue = 0;
-            int count = test.questions[QuestionNumber - 1].variants.Count;
+            int questionNow = QuestionNumber - 1;
+            int count = test.questions[questionNow].variants.Count;
             if (count == 1)
             {
-                for(int i = 0; i < count; i++)
+                int i = 0;
+                foreach (Control control in AnswersPanel.Controls)
                 {
-                    if (test.questions[QuestionNumber - 1].variants[i].text == answerTextBox.Text.ToLower())
-                            mark++;
+                    if (control.Tag?.ToString() == "variant")
+                    {
+                        if (test.questions[questionNow].variants[i].isTrue == true)
+                            if (((TextBox)control).Text == test.questions[questionNow].variants[0].text)
+                                mark++;
+                        i++;
+                    }
                 }
             }
             else
             {
                 for (int i = 0; i < count; i++)
                 {
-                    if (test.questions[QuestionNumber - 1].variants[i].isTrue)
+                    if (test.questions[questionNow].variants[i].isTrue)
                     {
                         countTrue++;
                     }
@@ -121,66 +127,84 @@ namespace MKG
                 if (countTrue == 1)
                 {
                     int i = 0;
-                    foreach (Control control in RadioPanel.Controls)
+                    foreach (Control control in AnswersPanel.Controls)
                     {
-                        if (test.questions[QuestionNumber-1].variants[i].isTrue == true)
-                            if (((RadioButton)control).Checked == test.questions[QuestionNumber-1].variants[i].isTrue)
-                                mark++;
-                        i++;
+                        if (control.Tag?.ToString() == "variant")
+                        {
+                            if (test.questions[questionNow].variants[i].isTrue == true)
+                                if (((RadioButton)control).Checked == test.questions[questionNow].variants[i].isTrue)
+                                    mark++;
+                            i++;
+                        }
                     }
                 }
                 else
                 {
                     int countTrueSelected = 0;
                     int i = 0;
-                    foreach (Control control in CheckPanel.Controls)
+                    foreach (Control control in AnswersPanel.Controls)
                     {
-                        if (test.questions[QuestionNumber - 1].variants[i].isTrue)
+                        if (control.Tag?.ToString() == "variant")
                         {
-                            if (((CheckBox)control).Checked == (test.questions[QuestionNumber - 1].variants[i].isTrue))
-                                countTrueSelected++;
+                            if (test.questions[questionNow].variants[i].isTrue)
+                            {
+                                if (((CheckBox)control).Checked == (test.questions[questionNow].variants[i].isTrue))
+                                    countTrueSelected++;
+                            }
+                            i++;
                         }
-                        i++;
                     }
                     mark += (float)countTrueSelected / countTrue;
                 }
             }
         }
-       
+
+        public void Clear()
+        {
+            List<Control> removeControls = new List<Control>();
+            foreach (Control control in AnswersPanel.Controls)
+            {
+                if (control.Tag?.ToString() == "variant")
+                    removeControls.Add(control);
+            }
+            
+            foreach(Control control in removeControls)
+                AnswersPanel.Controls.Remove(control);
+        }
+
         public void NextQuestionMethod()
         {
             if (QuestionNumber == 10)
             {
-                NextQuestionFromTB.Text = "Закончить тестирование";
-                NextQuestionFromCB.Text = "Закончить тестирование";
-                NextQuestionFromRadio.Text = "Закончить тестирование";
+                NextQuestionButton.Text = "Закончить тестирование";
             }
             else
             {
                 int countTrue = 0;
-                QuestionNameLabel.Text = (QuestionNumber+1)+". "+test.questions[QuestionNumber].text.ToString();
+                QuestionLabel.Text = (QuestionNumber+1)+ "/10 " + test.questions[QuestionNumber].text.ToString();
                 int count = test.questions[QuestionNumber].variants.Count;
                 if (count == 1)
                 {
-                    answerTextBox.Location = new Point(756, 442);
-                    typesTabControl.SelectedIndex = 0;
-                    int h, w;
-                    h = typesTabControl.Height / 2 - QuestionNameLabel.Height / 2;
-                    w = typesTabControl.Width / 2 - QuestionNameLabel.Width / 2;
-                    RadioPanel.Controls.Add(QuestionNameLabel);
-                    QuestionNameLabel.Location = new Point(h + 50, w - 400);
+                    TextBox newTextBox = new TextBox();
+                    newTextBox.Tag = "variant";
+                    newTextBox.Font = new Font("Consolas", 16);
+                    newTextBox.Size = new Size(900, 40);
+
+                    AnswersPanel.Controls.Add(newTextBox);
+                    newTextBox.Location = new Point(QuestionLabel.Location.X, 30 + QuestionLabel.Location.Y + 100);
+
                     SecondsLeftLabel.Visible = true;
-                    seconds = 90;
+                    seconds = 91;
                     timer.Start();
                     if (QuestionNumber == 9)
                     {
-                        NextQuestionFromTB.Text = "Закончить тестирование";
-                        NextQuestionFromCB.Text = "Закончить тестирование";
-                        NextQuestionFromRadio.Text = "Закончить тестирование";
+                        NextQuestionButton.Text = "Закончить тестирование";
                     }
                 }
                 else
                 {
+                    QuestionLabel.Text = (QuestionNumber + 1) + "/10 " + test.questions[QuestionNumber].text.ToString();
+                    SecondsLeftLabel.Visible = true;
                     for (int i = 0; i < count; i++)
                     {
                         if (test.questions[QuestionNumber].variants[i].isTrue)
@@ -191,60 +215,44 @@ namespace MKG
 
                     if (countTrue == 1)
                     {
-                        typesTabControl.SelectedIndex = 1;
-                        int h, w;
-                        h = typesTabControl.Height / 2 - QuestionNameLabel.Height / 2;
-                        w = typesTabControl.Width / 2 - QuestionNameLabel.Width / 2;
-                        RadioPanel.Controls.Add(QuestionNameLabel);
-                        QuestionNameLabel.Location = new Point(h+50, w-400);
                         for (int i = 0; i < count; i++)
                         {
-                            string nameButt = "answer" + i + "RB";
                             RadioButton newButton = new RadioButton();
-                            newButton.Name = nameButt;
+                            newButton.Tag = "variant";
+                            newButton.BackColor = Color.Transparent;
                             newButton.Text = test.questions[QuestionNumber].variants[i].text;
-                            RadioPanel.Controls.Add(newButton);
+                            newButton.Font = new Font("Consolas", 16);
+                            AnswersPanel.Controls.Add(newButton);
                             newButton.AutoSize = true;
-                            newButton.Location = new Point(h+100, w+40 * i);
-                            RadioPanel.Controls.Add(SecondsLeftLabel);
-                            
+                            newButton.Location = new Point(QuestionLabel.Location.X+30, 30 + QuestionLabel.Location.Y+50 * (i + 1));
                             SecondsLeftLabel.Visible = true;
-                            seconds = 30;
+                            seconds = 31;
                             timer.Start();
                             if (QuestionNumber == 9)
                             {
-                                NextQuestionFromTB.Text = "Закончить тестирование";
-                                NextQuestionFromCB.Text = "Закончить тестирование";
-                                NextQuestionFromRadio.Text = "Закончить тестирование";
+                                NextQuestionButton.Text = "Закончить тестирование";
                             }
                         }
                     }
                     else
                     {
-                        typesTabControl.SelectedIndex = 2;
-                        int h, w;
-                        h = typesTabControl.Height / 2 - QuestionNameLabel.Height / 2;
-                        w = typesTabControl.Width / 2 - QuestionNameLabel.Width / 2;
-                        RadioPanel.Controls.Add(QuestionNameLabel);
-                        QuestionNameLabel.Location = new Point(h + 50, w - 400);
                         for (int i = 0; i < count; i++)
                         {
-                            string nameButt = "answer" + i + "CB";
                             CheckBox newButton = new CheckBox();
-                            newButton.Name = nameButt;
+                            newButton.Tag = "variant";
+                            newButton.BackColor = Color.Transparent;
                             newButton.Text = test.questions[QuestionNumber].variants[i].text;
-                            CheckPanel.Controls.Add(newButton);
+                            newButton.Font = new Font("Consolas", 16);
+                            AnswersPanel.Controls.Add(newButton);
+                            AnswersPanel.Controls.Add(SecondsLeftLabel);
                             newButton.AutoSize = true;
-                            newButton.Location = new Point(0, 40 * i);
+                            newButton.Location = new Point(QuestionLabel.Location.X+30, 30+QuestionLabel.Location.Y + 50 * (i + 1));
                             SecondsLeftLabel.Visible = true;
-                            RadioPanel.Controls.Add(SecondsLeftLabel);
-                            seconds = 45;
+                            seconds = 46;
                             timer.Start();
                             if (QuestionNumber == 9)
                             {
-                                NextQuestionFromTB.Text = "Закончить тестирование";
-                                NextQuestionFromCB.Text = "Закончить тестирование";
-                                NextQuestionFromRadio.Text = "Закончить тестирование";
+                                NextQuestionButton.Text = "Закончить тестирование";
                             }
                         }
                     }
@@ -259,6 +267,19 @@ namespace MKG
             if (seconds == 0)
             {
                 timer.Stop();
+                CheckTrueOrNot();
+                if (NextQuestionButton.Text == "Закончить тестирование")
+                {
+                    thema1.Enabled = true;
+                    thema2.Enabled = true;
+                    thema3.Enabled = true;
+                    theoryButton.Enabled = true;
+                    SecondsLeftLabel.Visible = false;
+                    LeaveFromTest.Visible = false;
+                    QuestionLabel.Text = $"Количество правильных ответов - {mark} из 10 \n" + ((mark > 8) ? "Оценка: 5" : (mark > 6) ? "Оценка: 4" : (mark > 5) ? "Оценка: 3" : "Оценка: 2");
+                    NextQuestionButton.Visible = false;
+                }
+                Clear();
                 NextQuestionMethod();
             }
             SecondsLeftLabel.Text = $"Оставшееся время: {seconds.ToString()}";
@@ -266,13 +287,13 @@ namespace MKG
 
         private void LeaveFromTest_Click(object sender, EventArgs e)
         {
-            timer.Stop();
             if (DialogResult.OK == MessageBox.Show("Вы действительно хотите покинуть тест?", "Подтверждение", MessageBoxButtons.OKCancel, MessageBoxIcon.Question))
-            {
+            {            
+                Clear();
+                QuestionLabel.Visible = false;
+                NextQuestionButton.Visible = false;
                 EvaluationCriteriaRTB.Visible = true;
                 QuestionNumber = 0;
-                typesTabControl.Visible = false;
-                QuestionNameLabel.Text = "Выберите тему для тестирования";
                 thema1.Enabled = true;
                 thema2.Enabled = true;
                 thema3.Enabled = true;
@@ -280,7 +301,6 @@ namespace MKG
                 SecondsLeftLabel.Visible = false;
                 LeaveFromTest.Visible = false;
             }
-            timer.Start();
         }
 
         private void exitBox_Click(object sender, EventArgs e)
@@ -291,6 +311,25 @@ namespace MKG
         private void HidePB_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void InteractiveButton_Click(object sender, EventArgs e)
+        {
+            Process.Start("My project.exe");
+        }
+
+        static void SetRoundedShape(Control control, int radius)
+        {
+            System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath();
+            path.AddLine(radius, 0, control.Width - radius, 0);
+            path.AddArc(control.Width - radius, 0, radius, radius, 270, 90);
+            path.AddLine(control.Width, radius, control.Width, control.Height - radius);
+            path.AddArc(control.Width - radius, control.Height - radius, radius, radius, 0, 90);
+            path.AddLine(control.Width - radius, control.Height, radius, control.Height);
+            path.AddArc(0, control.Height - radius, radius, radius, 90, 90);
+            path.AddLine(0, control.Height - radius, 0, radius);
+            path.AddArc(0, 0, radius, radius, 180, 90);
+            control.Region = new Region(path);
         }
     }
 }
